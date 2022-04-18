@@ -3,7 +3,7 @@
 [![License](http://poser.pugx.org/sysbot/bin/license)](https://packagist.org/packages/sysbot/bin)
 ![Required PHP Version](https://img.shields.io/badge/php-%E2%89%A58.0-brightgreen)
 [![Latest Stable Version](http://poser.pugx.org/sysbot/bin/v)](https://packagist.org/packages/sysbot/bin)
-[![Tests](https://github.com/Sysbot-org/bin/actions/workflows/tests.yml/badge.svg)](https://github.com/Sysbot-org/bin/actions)
+[![Tests](https://github.com/Sysbot-org/bin/workflows/Tests/badge.svg)](https://github.com/Sysbot-org/bin/actions)
 [![Dependencies](https://img.shields.io/librariesio/github/Sysbot-org/bin)](https://libraries.io/github/Sysbot-org/bin)
 [![Code Quality](https://img.shields.io/scrutinizer/quality/g/Sysbot-org/bin)](https://scrutinizer-ci.com/g/Sysbot-org/bin/?branch=main)
 
