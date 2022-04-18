@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2022-04-18
+
+### Changed
+- Updated dependencies.
+
 ## [1.0.0] - 2022-04-18
 
 ### Added
@@ -17,5 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unit testing and code coverage.
 
 
-[Unreleased]: https://github.com/Sysbot-org/bin/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/Sysbot-org/bin/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/Sysbot-org/bin/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/Sysbot-org/tgscraper/releases/tag/1.0.0
