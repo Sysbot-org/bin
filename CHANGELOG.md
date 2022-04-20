@@ -7,14 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+### Added
+- New methods for `BigInteger` polyfill class: `compareTo`, `plus`, `minus` and `multipliedBy`. 
+
+### Fixed
+- Fixed an index mismatch in the array returned by `Parser::decode()`.
+- Fixed incorrect deserialization in `BigInteger::fromBytes()`.
+- Improved type checking in `Parser`.
+- Removed dead and/or redundant code.
+- Other minor bug fixes.
 
 ## [1.0.1] - 2022-04-18
-
 ### Changed
 - Updated dependencies.
 
 ## [1.0.0] - 2022-04-18
-
 ### Added
 - Serialization/deserialization of integers, longs and strings.
 - Support for base64 URL and RLE encoding/decoding.

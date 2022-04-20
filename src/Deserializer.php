@@ -118,14 +118,14 @@ class Deserializer
     public function readLongLong(bool $bigEndian = false): int|BigInteger
     {
         $data = $this->getBytes(8, $bigEndian);
+        if ($bigEndian xor IS_BIG_ENDIAN) {
+            $data = strrev($data);
+        }
+        $result = BigInteger::fromBytes($data);
         if (IS_32_BIT) {
-            return BigInteger::fromBytes($bigEndian ? $data : strrev($data));
+            return $result;
         }
-        $result = self::unpack('q', IS_BIG_ENDIAN ? strrev($data) : $data);
-        if (null === $result) {
-            throw new ArithmeticError('Cannot de-serialize long long');
-        }
-        return $result;
+        return $result->toInt();
     }
 
     /**

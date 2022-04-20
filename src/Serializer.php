@@ -26,15 +26,12 @@ class Serializer
      * @param string $format
      * @param mixed|null $value
      * @param bool $bigEndian
-     * @return string|null
+     * @return string
      */
-    public static function pack(string $format, mixed $value = null, bool $bigEndian = false): ?string
+    public static function pack(string $format, mixed $value = null, bool $bigEndian = false): string
     {
         /** @var string|false $result */
         $result = pack($format, $value);
-        if (false === $result) {
-            return null;
-        }
         if ($bigEndian) {
             $result = strrev($result);
         }
@@ -48,11 +45,7 @@ class Serializer
      */
     public function addLong(int $value, bool $bigEndian = false): self
     {
-        $data = self::pack('V', $value);
-        if ($bigEndian) {
-            $data = strrev($data);
-        }
-        $this->bytes .= $data;
+        $this->bytes .= self::pack('V', $value, $bigEndian);
         return $this;
     }
 
@@ -64,22 +57,9 @@ class Serializer
      */
     public function addLongLong(int|BigInteger $value, bool $bigEndian = false): self
     {
-        if (IS_32_BIT and is_int($value)) {
-            $value = BigInteger::of($value);
-        }
-        if ($value instanceof BigInteger) {
-            $data = $value->toBytes();
-            if (!$bigEndian) {
-                $data = strrev($data);
-            }
-            $this->bytes .= $data;
-            return $this;
-        }
-        $data = self::pack('q', $value);
-        if (IS_BIG_ENDIAN) {
-            $data = strrev($data);
-        }
-        if ($bigEndian) {
+        $value = BigInteger::of($value);
+        $data = $value->toBytes();
+        if (!$bigEndian) {
             $data = strrev($data);
         }
         $this->bytes .= $data;

@@ -18,7 +18,13 @@ class DeserializerTest extends TestCase
     public function testReadLongLong()
     {
         $deserializer = new Deserializer(BigInteger::of(1)->toBytes());
-        $this->assertEquals(1, $deserializer->readLongLong(true));
+        $expected = 1;
+        $actual = $deserializer->readLongLong(true);
+        if ($actual instanceof BigInteger) {
+            $expected = '1';
+            $actual = (string)$actual;
+        }
+        $this->assertEquals($expected, $actual);
         $deserializer = new Deserializer(pack('V', 1));
         $this->assertEquals(1, $deserializer->readLong());
     }

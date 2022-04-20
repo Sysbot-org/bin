@@ -82,7 +82,7 @@ trait BinaryUtils
         if ($remainder < 0) {
             $remainder += abs($b);
         }
-        return $remainder;
+        return (int)$remainder;
     }
 
 }

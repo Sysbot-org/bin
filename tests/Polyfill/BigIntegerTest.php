@@ -51,10 +51,10 @@ class BigIntegerTest extends TestCase
 
     public function testFromBytes()
     {
-        $bytes = pack('q', 0);
+        $bytes = pack('q', 1);
         $bytes = IS_BIG_ENDIAN ? $bytes : strrev($bytes);
         $int = BigInteger::fromBytes($bytes);
-        $this->assertEquals(0, $int->toInt());
+        $this->assertEquals(1, $int->toInt());
         $this->assertEquals($bytes, $int->toBytes());
     }
 
@@ -64,4 +64,37 @@ class BigIntegerTest extends TestCase
         $this->expectExceptionMessage('Cannot de-serialize from bytes');
         BigInteger::fromBytes(pack('V', 0));
     }
+
+    public function testCompareTo()
+    {
+        $int = BigInteger::of(5);
+        $this->assertEquals(1, $int->compareTo(-13));
+        $this->assertEquals(0, $int->compareTo(5));
+        $this->assertEquals(-1, $int->compareTo(18));
+    }
+
+    public function testPlus()
+    {
+        $int = BigInteger::of(2);
+        $this->assertEquals(7, $int->plus(5)->toInt());
+        $this->assertEquals(5, $int->plus('-2')->toInt());
+        $this->assertEquals(16, $int->plus(BigInteger::of(11))->toInt());
+    }
+
+    public function testMinus()
+    {
+        $int = BigInteger::of(2);
+        $this->assertEquals(-3, $int->minus(5)->toInt());
+        $this->assertEquals(-1, $int->minus('-2')->toInt());
+        $this->assertEquals(-12, $int->minus(BigInteger::of(11))->toInt());
+    }
+
+    public function testMultipliedBy()
+    {
+        $int = BigInteger::of(2);
+        $this->assertEquals(10, $int->multipliedBy(5)->toInt());
+        $this->assertEquals(-20, $int->multipliedBy('-2')->toInt());
+        $this->assertEquals(-220, $int->multipliedBy(BigInteger::of(11))->toInt());
+    }
+
 }

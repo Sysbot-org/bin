@@ -20,6 +20,7 @@ class ParserTest extends TestCase
                 ['format' => Formats::LONG, 'value' => 1],
                 ['format' => Formats::LONG, 'value' => 1, 'big_endian' => true],
                 ['format' => Formats::STRING, 'value' => 'Hi mom!'],
+                ['format' => '', 'value' => 'This will not be part of the result.'],
                 ['format' => Formats::LONG_LONG, 'value' => 1, 'big_endian' => true]
             ]
         );
@@ -33,6 +34,7 @@ class ParserTest extends TestCase
         $actual = Parser::decode($bytes, [
             ['format' => Formats::LONG],
             ['format' => Formats::LONG, 'big_endian' => true],
+            ['format' => ''],
             ['format' => Formats::STRING],
             ['format' => Formats::LONG_LONG, 'big_endian' => true]
         ]);

@@ -24,7 +24,8 @@ class Parser
     {
         $deserializer = new Deserializer($bytes);
         $result = [];
-        foreach ($data as $index => $value) {
+        $index = 0;
+        foreach ($data as $value) {
             $format = $value['format'] ?? null;
             if (empty($format)) {
                 continue;
@@ -35,6 +36,7 @@ class Parser
                 Formats::LONG_LONG => $deserializer->readLongLong($bigEndian),
                 Formats::STRING => $deserializer->readString()
             };
+            $index++;
         }
         return $result;
     }
@@ -55,9 +57,9 @@ class Parser
             }
             $bigEndian = $value['big_endian'] ?? false;
             match ($format) {
-                Formats::LONG => $serializer->addLong($content, $bigEndian),
-                Formats::LONG_LONG => $serializer->addLongLong($content, $bigEndian),
-                Formats::STRING => $serializer->addString($content)
+                Formats::LONG => $serializer->addLong($content ?? 0, $bigEndian),
+                Formats::LONG_LONG => $serializer->addLongLong($content ?? 0, $bigEndian),
+                Formats::STRING => $serializer->addString((string)$content)
             };
         }
         return (string)$serializer;

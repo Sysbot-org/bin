@@ -29,12 +29,15 @@ class BigInteger
     }
 
     /**
-     * @param int|string $value
+     * @param BigInteger|int|string $value
      * @return static
      * @throws Exception
      */
-    public static function of(int|string $value): self
+    public static function of(BigInteger|int|string $value): self
     {
+        if ($value instanceof BigInteger) {
+            return $value;
+        }
         return new self((string)$value);
     }
 
@@ -66,9 +69,61 @@ class BigInteger
         return $bytes;
     }
 
+    /**
+     * @return int
+     */
     public function toInt(): int
     {
         return (int)$this->value;
+    }
+
+    /**
+     * @param int|string|BigInteger $number
+     * @return int
+     * @throws Exception
+     */
+    public function compareTo(int|string|BigInteger $number): int
+    {
+        $number = BigInteger::of($number);
+        return (int)$this->value <=> $number->toInt();
+    }
+
+    /**
+     * @param int|string|BigInteger $number
+     * @return $this
+     * @throws Exception
+     */
+    public function plus(int|string|BigInteger $number): BigInteger
+    {
+        $number = BigInteger::of($number);
+        $this->value = (string)($this->toInt() + $number->toInt());
+        return $this;
+    }
+
+    /**
+     * @param int|string|BigInteger $number
+     * @return $this
+     * @throws Exception
+     */
+    public function minus(int|string|BigInteger $number): BigInteger
+    {
+        if ($number instanceof BigInteger) {
+            $number = $number->toInt();
+        }
+        $number = (int)$number;
+        return $this->plus(-$number);
+    }
+
+    /**
+     * @param int|string|BigInteger $number
+     * @return $this
+     * @throws Exception
+     */
+    public function multipliedBy(int|string|BigInteger $number): BigInteger
+    {
+        $number = BigInteger::of($number);
+        $this->value = (string)($this->toInt() * $number->toInt());
+        return $this;
     }
 
     /**
