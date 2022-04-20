@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.1.1] - 2022-04-20
 ### Fixed
 - Fixed code in `Deserializer::readLongLong()` since incorrect values were returned.
 - Fixed missing link in changelog.
@@ -33,7 +35,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unit testing and code coverage.
 
 
-[Unreleased]: https://github.com/Sysbot-org/bin/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/Sysbot-org/bin/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/Sysbot-org/bin/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/Sysbot-org/bin/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/Sysbot-org/bin/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/Sysbot-org/tgscraper/releases/tag/1.0.0
