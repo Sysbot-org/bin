@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed an index mismatch in the array returned by `Parser::decode()`.
 - Fixed incorrect deserialization in `BigInteger::fromBytes()`.
-- Improved type checking in `Parser`.
+- Improved type checking and PHPDoc in `Parser`.
 - Removed dead and/or redundant code.
 - Other minor bug fixes.
 

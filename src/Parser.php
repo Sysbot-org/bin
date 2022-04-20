@@ -17,7 +17,7 @@ class Parser
     /**
      * @param string $bytes
      * @param array $data
-     * @return array{array{format: string, big_endian?: bool}}
+     * @return array<array{format: string, big_endian?: bool}>
      * @throws Exception
      */
     public static function decode(string $bytes, array $data): array
@@ -42,7 +42,7 @@ class Parser
     }
 
     /**
-     * @param array{array{format: string, value: mixed, big_endian?: bool}} $data
+     * @param array<array{format: string, value: mixed, big_endian?: bool}> $data
      * @return string
      * @throws Exception
      */
