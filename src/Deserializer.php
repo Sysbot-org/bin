@@ -118,10 +118,7 @@ class Deserializer
     public function readLongLong(bool $bigEndian = false): int|BigInteger
     {
         $data = $this->getBytes(8, $bigEndian);
-        if ($bigEndian xor IS_BIG_ENDIAN) {
-            $data = strrev($data);
-        }
-        $result = BigInteger::fromBytes($data);
+        $result = BigInteger::fromBytes(IS_BIG_ENDIAN ? $data : strrev($data));
         if (IS_32_BIT) {
             return $result;
         }

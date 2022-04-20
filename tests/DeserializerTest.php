@@ -25,8 +25,8 @@ class DeserializerTest extends TestCase
             $actual = (string)$actual;
         }
         $this->assertEquals($expected, $actual);
-        $deserializer = new Deserializer(pack('V', 1));
-        $this->assertEquals(1, $deserializer->readLong());
+        $deserializer = new Deserializer(strrev(BigInteger::of(2)->toBytes()));
+        $this->assertEquals(2, $deserializer->readLongLong());
     }
 
     public function testSeek()
