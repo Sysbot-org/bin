@@ -23,7 +23,7 @@ Install the library with composer:
 **(32-bit systems)** You must also install the required
 dependency [brick/math](https://packagist.org/packages/brick/math).
 
-`$ composer require "brick/math:^0.9"`
+`$ composer require "brick/math:^0.10"`
 
 ## Usage
 
