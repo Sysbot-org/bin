@@ -97,4 +97,20 @@ class BigIntegerTest extends TestCase
         $this->assertEquals(-220, $int->multipliedBy(BigInteger::of(11))->toInt());
     }
 
+    public function testShiftedLeft()
+    {
+        $int = BigInteger::of(2);
+        $this->assertEquals(2 << 2, $int->shiftedLeft(2)->toInt());
+        $this->assertEquals(2 << 4, $int->shiftedLeft(4)->toInt());
+        $this->assertEquals(2 << 10, $int->shiftedLeft(10)->toInt());
+    }
+
+    public function testShiftedRight()
+    {
+        $int = BigInteger::of(8192);
+        $this->assertEquals(8192 >> 2, $int->shiftedRight(2)->toInt());
+        $this->assertEquals(8192 >> 4, $int->shiftedRight(4)->toInt());
+        $this->assertEquals(8192 >> 10, $int->shiftedRight(10)->toInt());
+    }
+
 }

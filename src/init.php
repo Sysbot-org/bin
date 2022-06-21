@@ -8,7 +8,7 @@ define('IS_BIG_ENDIAN', pack('S', 1) === pack('n', 1));
 if (IS_32_BIT and !InstalledVersions::isInstalled('brick/math')) {
     /** @noinspection PhpUnhandledExceptionInspection */
     throw new Exception(
-        'Missing required dependency for 32-bit systems: brick/math. Please run \'composer require "brick/math:^0.9"\' on your machine.'
+        'Missing required dependency for 32-bit systems: brick/math. Please run \'composer require "brick/math:^0.10"\' on your machine.'
     );
 }
 

@@ -127,6 +127,38 @@ class BigInteger
     }
 
     /**
+     * @param int $distance
+     * @return $this
+     * @throws Exception
+     */
+    public function shiftedLeft(int $distance): BigInteger
+    {
+        if ($distance === 0) {
+            return $this;
+        }
+        if ($distance < 0) {
+            return $this->shiftedRight(-$distance);
+        }
+        return BigInteger::of($this->toInt() << $distance);
+    }
+
+    /**
+     * @param int $distance
+     * @return BigInteger
+     * @throws Exception
+     */
+    public function shiftedRight(int $distance): BigInteger
+    {
+        if ($distance === 0) {
+            return $this;
+        }
+        if ($distance < 0) {
+            return $this->shiftedLeft(-$distance);
+        }
+        return BigInteger::of($this->toInt() >> $distance);
+    }
+
+    /**
      * @return string
      */
     public function __toString()
